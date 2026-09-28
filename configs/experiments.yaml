@@ -1,0 +1,18 @@
+# Experiment Configurations
+
+holdout_experiments:
+  available_attacks:
+    - "Web Attack"
+    - "Bot"
+    - "PortScan"
+    - "DDoS"
+    - "DoS"
+    - "Infiltration"
+    - "Brute Force"
+  
+  default_holdout: "Web Attack"
+  random_seed: 42
+
+limited_label_experiment:
+  fractions: [1.0, 0.5, 0.2, 0.1, 0.05]
+  seeds: [42, 101, 2024]

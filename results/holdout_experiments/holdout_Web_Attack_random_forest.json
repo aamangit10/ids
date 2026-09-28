@@ -1,0 +1,25 @@
+{
+  "held_out_attack": "Web Attack",
+  "model_name": "Random Forest",
+  "is_demo_data": false,
+  "status_note": "Loaded 1 real CICIDS2017 CSV file(s) with total 2500 records.",
+  "train_samples_count": 1789,
+  "held_out_train_samples_count": 0,
+  "test_samples_count": 711,
+  "held_out_test_samples_count": 114,
+  "overall_precision": 1.0,
+  "overall_recall": 0.7019,
+  "overall_f1": 0.8248,
+  "overall_accuracy": 0.8453,
+  "overall_roc_auc": 0.9986,
+  "false_positive_rate": 0.0,
+  "benign_recall": 1.0,
+  "known_attack_recall": 1.0,
+  "held_out_attack_recall": 0.0351,
+  "confusion_matrix": {
+    "tn": 342,
+    "fp": 0,
+    "fn": 110,
+    "tp": 259
+  }
+}

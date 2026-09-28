@@ -1,0 +1,54 @@
+{
+  "is_demo_data": true,
+  "status_message": "DEMO DATA \u2014 NOT RESEARCH RESULTS. Real CICIDS2017 files not found in 'data/raw'. Loaded demo dataset.",
+  "train_samples": 2000,
+  "test_samples": 500,
+  "features_count": 66,
+  "models": {
+    "Logistic Regression": {
+      "model_name": "Logistic Regression",
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "roc_auc": 1.0,
+      "false_positive_rate": 0.0,
+      "confusion_matrix": {
+        "tn": 274,
+        "fp": 0,
+        "fn": 0,
+        "tp": 226
+      }
+    },
+    "Random Forest": {
+      "model_name": "Random Forest",
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "roc_auc": 1.0,
+      "false_positive_rate": 0.0,
+      "confusion_matrix": {
+        "tn": 274,
+        "fp": 0,
+        "fn": 0,
+        "tp": 226
+      }
+    },
+    "XGBoost": {
+      "model_name": "XGBoost",
+      "accuracy": 0.998,
+      "precision": 0.9956,
+      "recall": 1.0,
+      "f1_score": 0.9978,
+      "roc_auc": 1.0,
+      "false_positive_rate": 0.0036,
+      "confusion_matrix": {
+        "tn": 273,
+        "fp": 1,
+        "fn": 0,
+        "tp": 226
+      }
+    }
+  }
+}

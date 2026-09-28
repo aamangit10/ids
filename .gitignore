@@ -1,0 +1,33 @@
+# Python / Environment
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Data & Models (Exclude large binaries / datasets)
+data/
+*.pcap
+*.csv
+!demo_data/*.csv
+!demo_data/*.json
+models/*.pkl
+models/*.pt
+models/*.onnx
+results/*.png
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

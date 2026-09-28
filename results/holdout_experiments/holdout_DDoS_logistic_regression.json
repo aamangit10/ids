@@ -1,0 +1,25 @@
+{
+  "held_out_attack": "DDoS",
+  "model_name": "Logistic Regression",
+  "is_demo_data": false,
+  "status_note": "Loaded 1 real CICIDS2017 CSV file(s) with total 2500 records.",
+  "train_samples_count": 1678,
+  "held_out_train_samples_count": 0,
+  "test_samples_count": 822,
+  "held_out_test_samples_count": 262,
+  "overall_precision": 1.0,
+  "overall_recall": 1.0,
+  "overall_f1": 1.0,
+  "overall_accuracy": 1.0,
+  "overall_roc_auc": 1.0,
+  "false_positive_rate": 0.0,
+  "benign_recall": 1.0,
+  "known_attack_recall": 1.0,
+  "held_out_attack_recall": 1.0,
+  "confusion_matrix": {
+    "tn": 343,
+    "fp": 0,
+    "fn": 0,
+    "tp": 479
+  }
+}
