@@ -11,7 +11,8 @@ env/
 htmlcov/
 
 # Data & Models (Exclude large binaries / datasets)
-data/
+/data/
+!research/data/
 *.pcap
 *.csv
 !demo_data/*.csv
