@@ -5,6 +5,13 @@ import {
   TrendingUp, Layers, Compass, Eye
 } from 'lucide-react';
 
+// Configure API base URL for deployment (Render static site or custom host)
+let rawApiBase = import.meta.env.VITE_API_URL || '';
+if (rawApiBase && !rawApiBase.startsWith('http://') && !rawApiBase.startsWith('https://')) {
+  rawApiBase = `https://${rawApiBase}`;
+}
+const API_BASE = rawApiBase.replace(/\/+$/, '');
+
 export default function App() {
   const [activeTab, setActiveTab] = useState('overview');
   const [healthStatus, setHealthStatus] = useState(null);
@@ -31,12 +38,12 @@ export default function App() {
 
   // Fetch initial health & model catalog
   useEffect(() => {
-    fetch('/api/health')
+    fetch(`${API_BASE}/api/health`)
       .then(res => res.json())
       .then(data => setHealthStatus(data))
       .catch(() => setHealthStatus({ status: 'DEMO', demo_mode: true }));
 
-    fetch('/api/models')
+    fetch(`${API_BASE}/api/models`)
       .then(res => res.json())
       .then(data => setModelsInfo(data.models || []))
       .catch(() => {});
@@ -44,7 +51,7 @@ export default function App() {
 
   const handleRunHoldout = () => {
     setIsHoldoutRunning(true);
-    fetch('/api/experiments/holdout', {
+    fetch(`${API_BASE}/api/experiments/holdout`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -76,7 +83,7 @@ export default function App() {
         direction: parseInt(p.direction)
       }));
 
-      fetch('/api/predict/flow', {
+      fetch(`${API_BASE}/api/predict/flow`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ flow_id: 'sample_ui_flow', packets })
@@ -101,7 +108,7 @@ export default function App() {
         "ACK Flag Count": 1
       };
 
-      fetch('/api/predict/csv', {
+      fetch(`${API_BASE}/api/predict/csv`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(csvSample)

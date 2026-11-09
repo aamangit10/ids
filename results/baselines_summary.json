@@ -1,4 +1,4 @@
-{
+   {
   "is_demo_data": true,
   "status_message": "DEMO DATA \u2014 NOT RESEARCH RESULTS. Real CICIDS2017 files not found in 'data/raw'. Loaded demo dataset.",
   "train_samples": 2000,

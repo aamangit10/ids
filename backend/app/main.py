@@ -2,6 +2,8 @@ import os
 import torch
 from fastapi import FastAPI, HTTPException, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from typing import Dict, Any, List, Optional
 from backend.app.schemas.models import (
     PredictFlowRequest, HoldoutExperimentRequest, ExplainRequest, HealthResponse
@@ -14,11 +16,11 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# Enable CORS for React Dashboard UI
+# Enable CORS for React Dashboard UI across any client device or domain
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_credentials=True,
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -59,7 +61,7 @@ def predict_csv(sample: Dict[str, Any]):
 def predict_packet_flow(req: PredictFlowRequest):
     """Analyzes a 5-tuple grouped packet sequence flow (Packet Mode) using PyTorch Transformer."""
     try:
-        packets_dicts = [p.dict() for p in req.packets]
+        packets_dicts = [p.model_dump() if hasattr(p, "model_dump") else p.dict() for p in req.packets]
         res = service.predict_packet_sequence_flow(packets_dicts)
         return res
     except Exception as e:
@@ -71,7 +73,7 @@ def get_explanation(req: ExplainRequest):
     """Computes SHAP feature importance for tabular models or Integrated Gradients for Transformer models."""
     try:
         if req.flow_packets:
-            packets_dicts = [p.dict() for p in req.flow_packets]
+            packets_dicts = [p.model_dump() if hasattr(p, "model_dump") else p.dict() for p in req.flow_packets]
             return service.predict_packet_sequence_flow(packets_dicts)
         elif req.sample_features:
             return service.predict_csv_flow(req.sample_features)
@@ -164,3 +166,23 @@ def get_limited_label_experiment():
         return IDSService.run_limited_label()
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
+
+
+# Serve React UI static assets if frontend/dist is built
+frontend_dist = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "frontend", "dist"))
+if os.path.exists(frontend_dist):
+    assets_dir = os.path.join(frontend_dist, "assets")
+    if os.path.exists(assets_dir):
+        app.mount("/assets", StaticFiles(directory=assets_dir), name="assets")
+
+    @app.get("/{full_path:path}")
+    async def serve_frontend(full_path: str):
+        if full_path.startswith("api/") or full_path in ["docs", "openapi.json", "redoc"]:
+            raise HTTPException(status_code=404, detail="Endpoint not found")
+        file_path = os.path.join(frontend_dist, full_path)
+        if full_path and os.path.isfile(file_path):
+            return FileResponse(file_path)
+        index_file = os.path.join(frontend_dist, "index.html")
+        if os.path.isfile(index_file):
+            return FileResponse(index_file)
+        raise HTTPException(status_code=404, detail="Frontend index.html not found")
