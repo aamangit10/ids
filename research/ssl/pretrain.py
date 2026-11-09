@@ -1,8 +1,10 @@
+from __future__ import annotations
+
 import os
 import json
 import torch
 import numpy as np
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List, Optional, Tuple
 from torch.utils.data import DataLoader
 from research.transformer.model import PacketTransformerEncoder
 from research.ssl.contrastive import InfoNCELoss, apply_packet_sequence_augmentation
