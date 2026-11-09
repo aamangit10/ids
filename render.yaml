@@ -18,9 +18,9 @@ services:
         value: 10000
 
   # -------------------------------------------------------------
-  # Frontend Dashboard UI (React 18 + Vite + Tailwind/Lucide)
+  # Frontend Dashboard UI (React 18 + Vite)
   # -------------------------------------------------------------
-  - type: static
+  - type: web
     name: ids-frontend
     runtime: static
     region: oregon
@@ -28,7 +28,7 @@ services:
     branch: main
     rootDir: frontend
     buildCommand: "npm install && npm run build"
-    staticPublishPath: dist
+    staticPublishPath: ./dist
     routes:
       - type: rewrite
         source: /*
@@ -39,4 +39,3 @@ services:
           type: web
           name: ids-backend
           property: host
-
