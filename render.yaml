@@ -37,7 +37,4 @@ services:
         destination: /index.html
     envVars:
       - key: VITE_API_URL
-        fromService:
-          type: web
-          name: ids-backend
-          property: host
+        value: https://ids-backend-3jtg.onrender.com
