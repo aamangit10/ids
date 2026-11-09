@@ -23,8 +23,6 @@ services:
   - type: web
     name: ids-frontend
     runtime: static
-    region: oregon
-    plan: free
     branch: main
     rootDir: frontend
     buildCommand: "npm install && npm run build"
