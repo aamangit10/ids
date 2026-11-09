@@ -3,6 +3,22 @@
 > **Defensive Cybersecurity Research System**  
 > Inspired by the research paper: *"Self-Supervised Transformer-based Contrastive Learning for Intrusion Detection Systems"* (Ippokratis Koukoulis, Ilias Syrigos, Thanasis Korakis, 2025).
 
+[![Live Frontend](https://img.shields.io/badge/Live%20Demo-ids--frontend.onrender.com-00C7B7?style=for-the-badge&logo=render&logoColor=white)](https://ids-frontend-clzl.onrender.com)
+[![Backend API](https://img.shields.io/badge/Backend%20API-ids--backend.onrender.com-46E3B7?style=for-the-badge&logo=fastapi&logoColor=black)](https://ids-backend-3jtg.onrender.com)
+[![Swagger Docs](https://img.shields.io/badge/API%20Docs-Swagger%20UI-85EA2D?style=for-the-badge&logo=swagger&logoColor=black)](https://ids-backend-3jtg.onrender.com/docs)
+
+---
+
+## 🌐 Live Deployed Application
+
+The system is deployed in production on **Render** and is publicly accessible from any laptop, mobile device, or computer:
+
+| Component | Live URL | Description |
+| :--- | :--- | :--- |
+| 🖥️ **Web Dashboard UI** | **[https://ids-frontend-clzl.onrender.com](https://ids-frontend-clzl.onrender.com)** | Interactive React 18 dashboard for live flow detection, unseen attack benchmarks, and SHAP explainability. |
+| ⚙️ **FastAPI REST Backend** | **[https://ids-backend-3jtg.onrender.com](https://ids-backend-3jtg.onrender.com)** | PyTorch Transformer & classical ML inference engine. |
+| 📑 **Interactive API Documentation** | **[https://ids-backend-3jtg.onrender.com/docs](https://ids-backend-3jtg.onrender.com/docs)** | Interactive Swagger UI to execute live model predictions and tests. |
+
 ---
 
 ## 🛡️ Safety & Scope Notice
